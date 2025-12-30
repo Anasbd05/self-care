@@ -45,7 +45,7 @@ export default function Onboard() {
           <View
             style={tw`flex flex-row items-center justify-center gap-6 mb-10 `}
           >
-            {item.feel?.map((f, index) => (
+            {item.feel?.map((f, index: string) => (
               <Text
                 key={index}
                 onPress={() => {
@@ -72,7 +72,7 @@ export default function Onboard() {
   const renderDoneButton = () => {
     return (
       <TouchableOpacity
-        onPress={() => router.push("/care")}
+        onPress={() => router.push("/(tabs)/care")}
         style={tw` mr-2 justify-center items-center `}
       >
         <Text style={tw` text-sky-800 font-bold text-sm `}>Done</Text>
