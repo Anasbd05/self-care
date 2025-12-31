@@ -15,7 +15,7 @@ export default function RootLayout() {
       }}
     >
       <Tabs.Screen
-        name="care"
+        name="index"
         options={{
           title: "care",
           tabBarIcon: ({ color }) => (

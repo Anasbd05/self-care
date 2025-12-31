@@ -19,7 +19,7 @@ interface cardType {
   title: string;
 }
 
-export default function care() {
+export default function index() {
   const cards = [
     {
       id: 1,
