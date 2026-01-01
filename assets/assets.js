@@ -64,11 +64,13 @@ export const PodcastImages = [
 export const RecentlyPlayed = [
   {
     title: "Black issue with Tracy Clayton",
+    author: "Finn the human",
     time: 25,
     image: played1,
   },
   {
     title: "Fake it until you make it today",
+    author: "Jake the dog",
     time: 12,
     image: played2,
   },

@@ -1,6 +1,8 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import Feather from "@expo/vector-icons/Feather";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import Octicons from "@expo/vector-icons/Octicons";
+import { useRouter } from "expo-router";
 import React from "react";
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -9,6 +11,8 @@ import { Hosts, RecentlyPlayed } from "../../assets/assets";
 import PodcastsSlider from "../../components/PodcastsSlider";
 
 export default function play() {
+  const router = useRouter();
+
   return (
     <SafeAreaView style={tw`bg-sky-300`}>
       {/* header */}
@@ -16,7 +20,7 @@ export default function play() {
         <View style={tw`flex-col gap-1 `}>
           <Text style={tw`text-3xl font-bold`}>Hey Anas! 👋</Text>
           <Text style={tw`text-gray-700 font-medium`}>
-            Listen to your favorite podcast
+            Listen to your favorite podcasts
           </Text>
         </View>
         <View style={tw`flex-row gap-2`}>
@@ -42,7 +46,16 @@ export default function play() {
           <Text style={tw`text-xl font-bold `}>Recently played</Text>
           <View style={tw`flex-col gap-6 mt-4`}>
             {RecentlyPlayed.map((played) => (
-              <View style={tw`flex-row justify-between`} key={played.time}>
+              <TouchableOpacity
+                onPress={() =>
+                  router.push({
+                    pathname: "/PlayPodcast",
+                    params: played,
+                  })
+                }
+                style={tw`flex-row justify-between`}
+                key={played.time}
+              >
                 <View style={tw`flex-row gap-3.5`}>
                   <Image
                     source={played.image}
@@ -63,11 +76,17 @@ export default function play() {
                   </View>
                 </View>
                 <TouchableOpacity
+                  onPress={() =>
+                    router.push({
+                      pathname: "/",
+                      params: played,
+                    })
+                  }
                   style={tw`h-10 w-10 bg-sky-300 rounded-full flex items-center justify-center `}
                 >
                   <FontAwesome6 name="play" size={18} color={"black"} />
                 </TouchableOpacity>
-              </View>
+              </TouchableOpacity>
             ))}
           </View>
           <View>
